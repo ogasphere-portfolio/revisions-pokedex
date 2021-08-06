@@ -1,0 +1,62 @@
+
+body {
+    background-color: #c14040;
+    font-family: 'Bree Serif', serif;
+}
+
+figure .figure {
+    border-radius: 1em;
+    background-color: #982c2c;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+/* Navbar */
+.d-flex.flex-wrap.justify-content-center.py-3.mb-4.border-bottom {
+    background-color: #efe3e3;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+.d-flex.flex-wrap.justify-content-center.py-3.mb-4.border-bottom a {
+    color: #c14040;
+}
+
+.d-flex.flex-wrap.justify-content-center.py-3.mb-4.border-bottom a span {
+    color: #c14040;
+}
+
+/* Fioritures */
+
+.album.py-5 {
+    background-color: #c14040;
+}
+
+.card.shadow-sm {
+    background-color: #982c2c;
+    border-radius: 20px;
+}
+
+.card.shadow-sm img {
+    padding: 0 2em;
+}
+
+small {
+    color: #efe3e3;
+}
+
+p.mb-1 {
+    color: #efe3e3;
+}

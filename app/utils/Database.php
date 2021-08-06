@@ -1,7 +1,9 @@
 <?php
+namespace Pokedex\utils;
 
-// Retenir son utilisation  => \Database::getPDO()
-// Design Pattern : Singleton
+use PDO;
+
+
 class Database {
     /** @var PDO */
     private $dbh;
