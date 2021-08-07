@@ -16,7 +16,7 @@
               </h3>
               <h2>
                 <?php foreach ($pokemon as $key => $value) : ?>
-                  <span class="badge " style="background-color: #<?= $pokemon[$key]->getColor() ?>"><?= $pokemon[$key]->getName() ?></span>
+                  <span class="badge " style="background-color: #<?= $pokemon[$key]->getColor() ?> "><?= $pokemon[$key]->getName() ?></span>
                  
                 <?php endforeach; ?>
               </h2>

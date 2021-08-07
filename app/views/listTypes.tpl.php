@@ -9,8 +9,8 @@
                     ?>
                         <div class="col">
                             <a href="<?= $altoRouter->generate('pokemonlistbytype', ['id' => $value->getId()]) ?>">
-                                <div class="card shadow-sm" style="background-color: #<?= $value->getColor() ?>">
-                                    <div class="card-body">
+                                <div class="card shadow-sm" >
+                                    <div class="card-body" style="background-color: #<?= $value->getColor() ?> ">
                                         <div class="d-flex justify-content-center align-items-center">
                                             <small>
                                                 <h2 style="color: white"><?= $value->getName() ?></h2>
