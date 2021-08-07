@@ -16,7 +16,8 @@ class Pokemon extends CoreModels
     private $defense_spe;	
     private $vitesse;	
     private $numero;
-    
+    private $name;
+    private $color;
 
     public function find($id){
         // je récupère ma connexion à la BDD
@@ -25,14 +26,26 @@ class Pokemon extends CoreModels
         // je créer ma requete SQL
        $sql = "SELECT * FROM `pokemon` WHERE `id` = {$id}";
 
+
+       $sql = "SELECT `pokemon`.*,`type`.`name`,`type`.`color`
+        FROM `pokemon`, `type`, `pokemon_type`
+        WHERE
+        `pokemon`.`numero` = `pokemon_type`.`pokemon_numero` AND
+        `type`.`id`= `pokemon_type`.`type_id` and
+        `pokemon`.`id`= {$id}
+        group by  `type`.`name`
+        ORDER BY `type`.`name`";
+
+
+
        // je demande à PDO de faire la requete
        $pdoStatement = $pdo->query($sql);
 
        // je demande à récupérer les données au format objet de type Category
-       $PokemonFromBase = $pdoStatement->fetchObject(Pokemon::class);
-
+       $Pokemon = $pdoStatement->fetchAll(PDO::FETCH_CLASS,Pokemon::class);
+       
        // le but est de renvoyer l'objet 
-       return $PokemonFromBase;       
+       return $Pokemon;       
    }
 
    public function findAll(){
@@ -40,7 +53,8 @@ class Pokemon extends CoreModels
     $pdo = Database::getPDO();
 
     // je créer ma requete SQL
-   $sql = "SELECT * FROM `pokemon`";
+   $sql = "SELECT * FROM `pokemon` 
+            ORDER BY `nom`";
 
    // je demande à PDO de faire la requete
    $pdoStatement = $pdo->query($sql);
@@ -51,6 +65,31 @@ class Pokemon extends CoreModels
    // le but est de renvoyer l'objet 
    return $allPokemon;
    }
+
+   public function findAllByType($type){
+
+    $pdo = Database::getPDO();
+
+    // je créer ma requete SQL
+   
+    $sql = "SELECT `pokemon`.*,`type`.`name`,`type`.`color`
+            FROM `pokemon`, `type`, `pokemon_type`
+            WHERE
+            `pokemon`.`numero` = `pokemon_type`.`pokemon_numero` AND
+            {$type} = `pokemon_type`.`type_id`
+            GROUP BY `pokemon`.`nom`
+            ORDER BY `pokemon`.`nom`";
+
+   // je demande à PDO de faire la requete
+   $pdoStatement = $pdo->query($sql);
+
+   // je demande à récupérer les données au format objet de type Category
+   $allPokemon = $pdoStatement->fetchAll(PDO::FETCH_CLASS,Pokemon::class);
+
+   // le but est de renvoyer l'objet 
+   return $allPokemon;
+   }
+
     /**
      * Get the value of nom
      */ 
@@ -207,6 +246,46 @@ class Pokemon extends CoreModels
     public function setNumero($numero)
     {
         $this->numero = $numero;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of name
+     */ 
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set the value of name
+     *
+     * @return  self
+     */ 
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of color
+     */ 
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Set the value of color
+     *
+     * @return  self
+     */ 
+    public function setColor($color)
+    {
+        $this->color = $color;
 
         return $this;
     }

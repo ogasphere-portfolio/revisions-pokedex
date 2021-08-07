@@ -22,21 +22,30 @@ $altoRouter->map(
 'GET',
 '/', 
     [
-        "method" => "displayHome",
+        "method" => "displayPokemonList",
         "controller" => "Pokedex\Controllers\MainController"
     ], 
 'home' );
 
 
+$altoRouter->map( 
+    'GET',
+    '/[i:id]', 
+        [
+            "method" => "displayPokemonListByType",
+            "controller" => "Pokedex\Controllers\MainController"
+        ], 
+    'pokemonlistbytype' );
+    
 
 $altoRouter->map( 
     /* 1 */'GET',
-    /* 2 */'/about', 
+    /* 2 */'/type', 
     /* 3 */    [
-            "method" => "displayType",
-            "controller" => "Pokedex\Controllers\TypeController"
+            "method" => "displayTypeList",
+            "controller" => "Pokedex\Controllers\MainController"
         ], 
-    /* 4 */'type' );
+    /* 4 */'typelist' );
 
 
 // catalog filtré par catégorie
@@ -44,24 +53,12 @@ $altoRouter->map(
     /* 1 */'GET',
     /* 2 */'/pokemon/[i:id]', 
     /* 3 */    [
-            "method" => "displayPokemon",
-            "controller" => "Pokedex\Controllers\PokemonController"
+            "method" => "displayPokemonDetails",
+            "controller" => "Pokedex\Controllers\MainController"
         ], 
-    /* 4 */'pokemon' );
+    /* 4 */'pokemondetails' );
 
 
-
-
-
-//`/catalogue/produit/[idProduct]` 
-$altoRouter->map( 
-    /* 1 */'GET',
-    /* 2 */'/catalogue/produit/[i:idProduct]', 
-    /* 3 */    [
-            "method" => "affichePageProduct",
-            "controller" => "Pokedex\Controllers\CatalogController"
-        ], 
-    /* 4 */'catalog-product' );
 
 
 $matchingRoute = $altoRouter->match();

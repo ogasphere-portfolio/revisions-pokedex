@@ -13,21 +13,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<?=$absoluteURL?>/css/style.css">
 
 </head>
 
 <body>
 
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <a href="<?=$absoluteURL?>" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
             <svg class="bi me-2" width="40" height="32"></svg>
             <span class="fs-4">Pokédex</span>
         </a>
 
         <ul class="nav nav-pills">
-            <li class="nav-item"><a href="#" class="nav-link" aria-current="page">Liste</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Types</a></li>
+            <li class="nav-item"><a href="<?=$absoluteURL?>" class="nav-link" aria-current="page">Liste</a></li>
+            <li class="nav-item"><a href="<?= $altoRouter->generate('typelist') ?>" class="nav-link">Types</a></li>
 
         </ul>
     </header>

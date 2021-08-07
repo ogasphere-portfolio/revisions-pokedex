@@ -8,7 +8,9 @@ figure .figure {
     border-radius: 1em;
     background-color: #982c2c;
 }
-
+a{
+    text-decoration: none;
+}
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -39,11 +41,36 @@ figure .figure {
 }
 
 /* Fioritures */
+.bgFond{
+    background-color: #c14040;
+}
+.td-progress{
+    width: 50%;
+}
 
+.progress{
+    background-color: #532a2a;
+    
+}
+.progress-bar{
+    background-color: white;
+}
+.stats{
+    color: white;
+}
+th{
+    color: white;
+    font-size: 1.2rem;
+    height: max-content;
+}
 .album.py-5 {
     background-color: #c14040;
 }
-
+.card-body{
+    background-color: #982c2c;
+    border-radius: 5%;
+    color: white;
+}
 .card.shadow-sm {
     background-color: #982c2c;
     border-radius: 20px;

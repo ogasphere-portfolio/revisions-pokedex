@@ -1,7 +1,7 @@
 
     <footer class="text-muted py-5">
         <div class="container">
-            <p class="mb-1">Made with &hearts; by Guerric</p>
+            <p class="mb-1">Made by Olivier</p>
         </div>
     </footer>
 
