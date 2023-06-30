@@ -33,7 +33,7 @@ class Pokemon extends CoreModels
         `pokemon`.`numero` = `pokemon_type`.`pokemon_numero` AND
         `type`.`id`= `pokemon_type`.`type_id` and
         `pokemon`.`id`= {$id}
-        group by  `type`.`name`
+        group by  `type`.`name`, `type`.`color`
         ORDER BY `type`.`name`";
 
 
@@ -72,13 +72,13 @@ class Pokemon extends CoreModels
 
     // je créer ma requete SQL
    
-    $sql = "SELECT `pokemon`.*,`type`.`name`,`type`.`color`
-            FROM `pokemon`, `type`, `pokemon_type`
-            WHERE
-            `pokemon`.`numero` = `pokemon_type`.`pokemon_numero` AND
-            {$type} = `pokemon_type`.`type_id`
-            GROUP BY `pokemon`.`nom`
-            ORDER BY `pokemon`.`nom`";
+    $sql = "SELECT `pokemon`.*, `type`.`name`, `type`.`color`
+        FROM `pokemon`
+        INNER JOIN `pokemon_type` ON `pokemon`.`numero` = `pokemon_type`.`pokemon_numero`
+        INNER JOIN `type` ON `pokemon_type`.`type_id` = `type`.`id`
+        WHERE {$type} = `pokemon_type`.`type_id`
+        GROUP BY `pokemon`.`nom`, `pokemon`.`id`, `type`.`name`, `type`.`color`
+        ORDER BY `pokemon`.`nom`";
 
    // je demande à PDO de faire la requete
    $pdoStatement = $pdo->query($sql);
